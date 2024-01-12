@@ -1,0 +1,18 @@
+---
+
+- hosts: all
+  become: true
+  tasks:
+    - name: Update Repo index
+      apt:
+        update_cache: yes
+
+    - name: remove curl package
+      apt:
+        name: curl
+        state: absent
+
+    - name: remove php support for Apache
+      apt:
+        name: libapache2-mod-php
+        state: absent
